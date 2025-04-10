@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "chrono-node": "^2.8.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "googleapis": "^148.0.0",
+    "open": "^10.1.0",
+    "openai": "^4.93.0",
+    "twilio": "^5.5.2"
+  }
+}
