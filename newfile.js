@@ -141,7 +141,8 @@ console.log("Attendees:", attendees);
     calendarResponse = await calendar.events.insert({
       calendarId: 'primary',
       resource: event,
-      conferenceDataVersion: 1
+      conferenceDataVersion: 1,
+      sendUpdates:'all'
     });
   } catch (error) {
     console.error('Calendar error:', error);
