@@ -22,6 +22,10 @@ const oAuth2Client = new google.auth.OAuth2(
 oAuth2Client.setCredentials({ refresh_token: process.env.GOOGLE_REFRESH_TOKEN });
 const calendar = google.calendar({ version: 'v3', auth: oAuth2Client });
 
+app.get('/', (req, res) => {
+  res.status(200).send('OK');
+});
+
 const sessions = {};
 
 app.post('/whatsapp', async (req, res) => {
