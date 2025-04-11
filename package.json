@@ -9,5 +9,8 @@
     "open": "^10.1.0",
     "openai": "^4.93.0",
     "twilio": "^5.5.2"
+  },
+  "scripts": {
+    "start": "node newfile.js"
   }
 }
