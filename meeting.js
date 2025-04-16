@@ -73,7 +73,7 @@ app.post('/whatsapp', async (req, res) => {
     });
 
     const twiml = new MessagingResponse();
-    twiml.message(`🛡️ To schedule meetings, please sign in with Google: ${await shortenUrl(authUrl)}`);
+    twiml.message(`🛡️ To schedule meetings, please sign in with Google: ${authUrl}`);
     return res.type('text/xml').send(twiml.toString());
   }
 
