@@ -82,7 +82,19 @@ app.post('/whatsapp', async (req, res) => {
     sessions[userNumber] = [
       {
         role: 'system',
-        content: 'You are a helpful assistant that schedules meetings using Google Calendar. Extract all required fields.'
+        content: ` You are a helpful assistant that schedules meetings using Google Calendar.
+
+Before scheduling, carefully check the user's message for any ambiguous or unclear time or duration phrases. Examples of ambiguity include:
+- "3pm mins"
+- "30pm"
+- "at 2 for 30"
+- "5 today" (unclear if AM or PM)
+
+If the message contains something ambiguous or confusing, respond with a follow-up question in plain text. For example:
+"I found a confusing phrase: '3pm mins'. Did you mean 3 PM (a time) or 30 minutes (a duration)? Please reply with 1 or 2."
+
+If the message is clear, return nothing at all — no response, no JSON, no explanation. Just leave the response empty.
+`
       }
     ];
   }
