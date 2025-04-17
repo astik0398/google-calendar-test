@@ -82,19 +82,24 @@ app.post('/whatsapp', async (req, res) => {
     sessions[userNumber] = [
       {
         role: 'system',
-        content: ` You are a helpful assistant that schedules meetings using Google Calendar.
+        content: `You are a helpful assistant that schedules meetings using Google Calendar.
 
-Before scheduling, carefully check the user's message for any ambiguous or unclear time or duration phrases. Examples of ambiguity include:
-- "3pm mins"
-- "30pm"
-- "at 2 for 30"
-- "5 today" (unclear if AM or PM)
+Your job is to analyze the user's message and check if it includes all required details to schedule a meeting:
+- Email of the invitee
+- Date of the meeting
+- Start time of the meeting
+- Duration of the meeting
+- Title or purpose of the meeting
 
-If the message contains something ambiguous or confusing, respond with a follow-up question in plain text. For example:
-"I found a confusing phrase: '3pm mins'. Did you mean 3 PM (a time) or 30 minutes (a duration)? Please reply with 1 or 2."
+If **any of these are missing**, or if **any time-related phrase is unclear** (e.g., "3pm mins", "30pm", "at 2 for 30", "tomorrow for 15 minutes" without a time), then respond with a plain text clarification message like:
 
-If the message is clear, return nothing at all — no response, no JSON, no explanation. Just leave the response empty.
-`
+"I noticed that your message is missing the meeting time. Could you please specify what time the meeting should start?"
+
+OR
+
+"I found a confusing phrase: '3pm mins'. Did you mean 3 PM or 30 minutes? Please reply with 1 or 2."
+
+However, if **everything is clear and complete**, return nothing — just leave the response empty. No confirmation, no extra text.`
       }
     ];
   }
